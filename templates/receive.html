@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section class="panel">
+  <h2 class="panel-title">Receive on this device</h2>
+  <p class="panel-hint">Show this QR on the screen. On your phone, choose Send and scan this code.</p>
+
+  <div class="qr-wrap">
+    <div id="qrcode" aria-label="Device QR code"></div>
+  </div>
+  <div class="code-line">
+    <span class="muted">Device ID:</span>
+    <code class="mono">{{ device_uuid }}</code>
+  </div>
+
+  <div id="status" class="status waiting">Waiting for link…</div>
+</section>
+
+<div id="redirect-overlay" class="redirect-overlay" style="display:none;">
+  <div class="redirect-card" role="alert" aria-live="polite">
+    <div class="spinner" aria-hidden="true"></div>
+    <div class="redirect-text">Opening link…</div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+<script>
+  // Pass device UUID to the page script
+  window.__DEVICE_UUID__ = "{{ device_uuid }}";
+</script>
+<script src="{% static 'js/receive.js' %}" defer></script>
+{% endblock %}

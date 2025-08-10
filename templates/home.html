@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1 class="hero-title">Fast, private device-to-device link transfer</h1>
+  <p class="hero-subtitle">
+    Pair devices with a QR code and send links instantly. No third‑party chats, no clutter.
+  </p>
+
+  <div class="actions" role="navigation" aria-label="Primary actions">
+    <a class="action-card" href="{% url 'send' %}" aria-label="Send link">
+      <div class="action-icon" aria-hidden="true">📤</div>
+      <div class="action-title">Send</div>
+      <div class="action-desc">Enter a link, then scan the receiver’s QR</div>
+    </a>
+
+    <a class="action-card" href="{% url 'receive' %}" aria-label="Receive link">
+      <div class="action-icon" aria-hidden="true">📥</div>
+      <div class="action-title">Receive</div>
+      <div class="action-desc">Show a QR for this device and auto‑redirect</div>
+    </a>
+  </div>
+</section>
+{% endblock %}

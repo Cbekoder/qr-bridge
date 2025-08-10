@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="panel">
+  <h2 class="panel-title">Send a link</h2>
+  <p class="panel-hint">Paste a URL, then scan the receiver’s QR code. The receiver will auto‑redirect.</p>
+
+  <form class="form-row" onsubmit="return false;">
+    <label for="link-input" class="sr-only">URL</label>
+    <input id="link-input" class="input" type="url" placeholder="https://example.com/page" />
+    <button id="scan-send-btn" class="btn btn-accent" type="button">Scan & Send</button>
+  </form>
+
+  <div id="error" class="error" role="alert" style="display:none;"></div>
+  <div id="success" class="success" role="status" style="display:none;">Link sent successfully</div>
+
+  <div id="scanner-modal" class="modal" aria-hidden="true" aria-modal="true" role="dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Scan receiver QR</h3>
+        <button id="close-modal" class="icon-btn" aria-label="Close">✕</button>
+      </div>
+      <div id="scanner" class="scanner" aria-label="QR scanner"></div>
+      <p class="muted">Point your camera at the receiver’s QR code.</p>
+    </div>
+  </div>
+</section>
+
+<script src="https://unpkg.com/html5-qrcode" defer></script>
+<script src="{% static 'js/send.js' %}" defer></script>
+{% endblock %}

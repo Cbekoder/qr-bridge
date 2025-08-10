@@ -4,7 +4,6 @@ from .base import *  # noqa
 DEBUG = False
 
 # Database
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
